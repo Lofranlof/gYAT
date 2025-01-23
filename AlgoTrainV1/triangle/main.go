@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"strings"
 )
 
 func getInputFromFileInLines(path string) ([]string, error) {
@@ -48,38 +47,24 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var output int
-	temp, command := input[0], input[1]
-	tempAr := strings.Split(temp, " ")
+	output := "NO"
 
-	tRoom, err := strconv.Atoi(tempAr[0])
+	a, err := strconv.Atoi(input[0])
+	if err != nil {
+		log.Fatal(err)
+	}
+	b, err := strconv.Atoi(input[1])
+	if err != nil {
+		log.Fatal(err)
+	}
+	c, err := strconv.Atoi(input[2])
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	tCond, err := strconv.Atoi(tempAr[1])
-	if err != nil {
-		log.Fatal(err)
+	if a+b > c && c+b > a && c+a > b {
+		output = "YES"
 	}
 
-	switch command {
-	case "freeze":
-		if tRoom <= tCond {
-			output = tRoom
-		} else {
-			output = tCond
-		}
-	case "heat":
-		if tRoom <= tCond {
-			output = tCond
-		} else {
-			output = tRoom
-		}
-	case "auto":
-		output = tCond
-	case "fan":
-		output = tRoom
-	}
-
-	writeAnsToFile("output.txt", strconv.Itoa(output))
+	writeAnsToFile("output.txt", output)
 }
