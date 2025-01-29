@@ -3,7 +3,9 @@ package utils
 import (
 	"bufio"
 	"io"
+	"log"
 	"os"
+	"strconv"
 )
 
 func GetInputFromFile(path string) (string, error) {
@@ -54,4 +56,16 @@ func WriteAnsToFile(path, ans string) error {
 		return err
 	}
 	return nil
+}
+
+func ConvertStrArrToIntArr(in []string) []int {
+	out := make([]int, 0, len(in))
+	for _, el := range in {
+		elInt, err := strconv.Atoi(el)
+		if err != nil {
+			log.Fatal(err)
+		}
+		out = append(out, elInt)
+	}
+	return out
 }
