@@ -1,2 +1,2 @@
 # gYAT
-gYandexAlgorithmsTraining - задачи с тренировок по алгоритмам
+goYandexAlgorithmsTraining - задачи с тренировок по алгоритмам на go
