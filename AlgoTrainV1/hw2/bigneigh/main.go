@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -45,27 +44,17 @@ func convertStrArrToIntArr(in []string) []int {
 	return out
 }
 
-func prepareInput(input []string) (ar []int, numToFind int) {
-	ar = convertStrArrToIntArr(strings.Split(input[1], " "))
-	numToFind, err := strconv.Atoi(input[len(input)-1])
-	if err != nil {
-		log.Fatal()
-	}
-	return ar, numToFind
-}
-
-func findClosestNum(ar []int, numToFind int) int {
-	var closestNum int
-	for i := 0; i < len(ar); i++ {
-		if i == 0 || math.Abs(float64(ar[i]-numToFind)) < math.Abs(float64(closestNum-numToFind)) {
-			closestNum = ar[i]
+func bigNeighCount(in []int) int {
+	count := 0
+	for i := 1; i < len(in)-1; i++ {
+		if in[i-1] < in[i] && in[i+1] < in[i] {
+			count++
 		}
 	}
-	return closestNum
+	return count
 }
 
 func main() {
-	input := getInputFromFileInLines("input.txt")
-	array, numToFind := prepareInput(input)
-	fmt.Println(findClosestNum(array, numToFind))
+	input := convertStrArrToIntArr(strings.Split(getInputFromFileInLines("input.txt")[0], " "))
+	fmt.Println(bigNeighCount(input))
 }
