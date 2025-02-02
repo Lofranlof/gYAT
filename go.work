@@ -1,6 +1,7 @@
 go 1.23.5
 
 use (
-    ./AlgoTrainV1/conditioner
-    ./utils
+	./AlgoTrainV1/hw1/conditioner
+	./AlgoTrainV1/hw1/linequation
+	./utils
 )
