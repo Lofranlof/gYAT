@@ -4,6 +4,7 @@ use (
 	./AlgoTrainV1/hw1/conditioner
 	./AlgoTrainV1/hw1/linequation
 	./AlgoTrainV1/hw2/govno
+	./AlgoTrainV1/hw2/gstmult3
 	./AlgoTrainV1/hw2/symseq
 	./utils
 )
