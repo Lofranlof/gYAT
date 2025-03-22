@@ -48,26 +48,6 @@ func getInputFromFileInLines(path string) [][]string {
 	return ans
 }
 
-func getInputFromStdin() []string {
-	scanner := bufio.NewScanner(os.Stdin)
-
-	var lines []string
-	for range 2 {
-		scanner.Scan()
-		line := scanner.Text()
-		if len(line) == 0 {
-			break
-		}
-		lines = append(lines, line)
-	}
-
-	err := scanner.Err()
-	if err != nil {
-		log.Fatal(err)
-	}
-	return lines
-}
-
 func convertStrArrToIntArr(in []string) []int {
 	out := make([]int, 0, len(in))
 	for _, el := range in {
